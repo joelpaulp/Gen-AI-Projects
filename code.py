@@ -15,11 +15,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS with improved visibility
 st.markdown("""
     <style>
-        /* Main container */
+        /* Body background */
         .main {
+            background-color: #f0f2f6;
             padding: 2rem;
         }
         
@@ -35,27 +36,42 @@ st.markdown("""
             padding: 2rem 1rem;
         }
         
-        /* Chat messages */
-        .stChatMessage {
-            background-color: #f7f7f8;
+        /* Chat container */
+        .stChatMessageContent {
+            background-color: #ffffff;
             border-radius: 10px;
             padding: 1rem;
             margin: 0.5rem 0;
+            color: #0f172a;  /* Dark text color for contrast */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
         
-        /* User message specific */
-        .stChatMessage[data-testid="user-message"] {
+        /* User message */
+        .stChatMessage[data-testid="user-message"] .stChatMessageContent {
             background-color: #e3f2fd;
+            color: #0f172a;
         }
         
-        /* AI message specific */
-        .stChatMessage[data-testid="assistant-message"] {
+        /* AI message */
+        .stChatMessage[data-testid="assistant-message"] .stChatMessageContent {
             background-color: #ffffff;
+            color: #0f172a;
         }
         
-        /* Input box */
-        .stTextInput input {
+        /* Chat input box */
+        .stChatInput {
+            background-color: #ffffff;
             border-radius: 20px;
+            padding: 0.5rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Code blocks in messages */
+        code {
+            background-color: #f8f9fa !important;
+            padding: 0.2em 0.4em !important;
+            border-radius: 3px !important;
+            color: #1a1a1a !important;
         }
     </style>
 """, unsafe_allow_html=True)
