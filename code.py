@@ -1,4 +1,13 @@
+import os
 import streamlit as st
+
+# Set the port from the environment variable
+port = int(os.getenv("PORT", 8501))
+
+# Your existing code...
+
+if __name__ == "__main__":
+    st.run(port=port)
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import (
@@ -10,7 +19,7 @@ from langchain_core.prompts import (
 
 # Page configuration
 st.set_page_config(
-    page_title="Code Assistant",
+    page_title="Virtual Code Assistant",
     layout="wide",
     initial_sidebar_state="expanded"
 )
