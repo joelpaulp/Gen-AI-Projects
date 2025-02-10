@@ -1,13 +1,5 @@
 import os
 import streamlit as st
-
-# Set the port from the environment variable
-port = int(os.getenv("PORT", 8501))
-
-# Your existing code...
-
-if __name__ == "__main__":
-    st.run(port=port)
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import (
@@ -16,6 +8,9 @@ from langchain_core.prompts import (
     AIMessagePromptTemplate,
     ChatPromptTemplate
 )
+
+# Set the port from the environment variable
+port = int(os.getenv("PORT", 8501))
 
 # Page configuration
 st.set_page_config(
@@ -27,55 +22,6 @@ st.set_page_config(
 # Custom CSS with improved visibility
 st.markdown("""
     <style>
-        /* Body background */
-        .main {
-            background-color: #f0f2f6;
-            padding: 2rem;
-        }
-        
-        /* Headers */
-        .css-10trblm {
-            color: #1E88E5;
-            font-size: 2.5rem !important;
-            font-weight: 600 !important;
-        }
-        
-        /* Sidebar */
-        .css-1d391kg {
-            padding: 2rem 1rem;
-        }
-        
-        /* Chat container */
-        .stChatMessageContent {
-            background-color: #475494;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            color: #0f172a;  /* Dark text color for contrast */
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* User message */
-        .stChatMessage[data-testid="user-message"] .stChatMessageContent {
-            background-color: #e3f2fd;
-            color: #0f172a;
-        }
-        
-        /* AI message */
-        .stChatMessage[data-testid="assistant-message"] .stChatMessageContent {
-            background-color: #475494;
-            color: #0f172a;
-        }
-        
-        /* Chat input box */
-        .stChatInput {
-            background-color: #475494;
-            border-radius: 20px;
-            padding: 0.5rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Code blocks in messages */
         code {
             background-color: #f8f9fa !important;
             padding: 0.2em 0.4em !important;
@@ -152,3 +98,6 @@ if user_query:
             st.markdown(ai_response)
     
     st.session_state.message_log.append({"role": "ai", "content": ai_response})
+
+if __name__ == "__main__":
+    st._run()
