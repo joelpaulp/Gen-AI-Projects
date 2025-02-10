@@ -38,7 +38,7 @@ st.markdown("""
         
         /* Chat container */
         .stChatMessageContent {
-            background-color: #ffffff;
+            background-color: #475494;
             border-radius: 10px;
             padding: 1rem;
             margin: 0.5rem 0;
@@ -54,13 +54,13 @@ st.markdown("""
         
         /* AI message */
         .stChatMessage[data-testid="assistant-message"] .stChatMessageContent {
-            background-color: #ffffff;
+            background-color: #475494;
             color: #0f172a;
         }
         
         /* Chat input box */
         .stChatInput {
-            background-color: #ffffff;
+            background-color: #475494;
             border-radius: 20px;
             padding: 0.5rem;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
