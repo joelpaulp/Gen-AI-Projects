@@ -9,6 +9,18 @@ from langchain_core.prompts import (
     ChatPromptTemplate
 )
 
+def initialize_ollama_model():
+    try:
+        llm_engine = ChatOllama(
+            model="deepseek-r1:1.5b",
+            base_url="http://localhost:11434",
+            temperature=0.3
+        )
+        return llm_engine
+    except Exception as e:
+        st.error(f"Ollama initialization error: {e}")
+        return None
+
 # Set the port from the environment variable
 port = int(os.getenv("PORT", 8501))
 
@@ -48,11 +60,7 @@ with st.sidebar:
     temperature = st.slider("Temperature", 0.0, 1.0, 0.3, 0.1)
 
 # Initialize LLM
-llm_engine = ChatOllama(
-    model=selected_model,
-    base_url="http://localhost:11434",
-    temperature=temperature
-)
+llm_engine = initialize_ollama_model()
 
 # System prompt focused on direct answers
 system_prompt = SystemMessagePromptTemplate.from_template(
@@ -99,5 +107,3 @@ if user_query:
     
     st.session_state.message_log.append({"role": "ai", "content": ai_response})
 
-if __name__ == "__main__":
-    st._run()
