@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
@@ -21,8 +20,6 @@ def initialize_ollama_model():
         st.error(f"Ollama initialization error: {e}")
         return None
 
-# Set the port from the environment variable
-port = int(os.getenv("PORT", 8501))
 
 # Page configuration
 st.set_page_config(
@@ -57,7 +54,7 @@ with st.sidebar:
         ["deepseek-r1:1.5b", "deepseek-r1:1.5b"],
         index=0
     )
-    temperature = st.slider("Temperature", 0.0, 1.0, 0.3, 0.1)
+    temperature = st.slider("Creativity", 0.0, 1.0, 0.3, 0.1)
 
 # Initialize LLM
 llm_engine = initialize_ollama_model()
