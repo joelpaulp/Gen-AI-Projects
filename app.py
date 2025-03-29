@@ -8,6 +8,7 @@ from langchain_core.prompts import (
     ChatPromptTemplate
 )
 
+
 def initialize_ollama_model():
     try:
         llm_engine = ChatOllama(

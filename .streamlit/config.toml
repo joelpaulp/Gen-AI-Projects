@@ -1,4 +1,3 @@
-[
-    server
-]
-enableCORS = false
+[server]
+port = 8051
+enableCORS = True
