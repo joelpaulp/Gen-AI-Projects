@@ -8,9 +8,16 @@ from langchain_core.prompts import (
     ChatPromptTemplate
 )
 
+# strea # Suppress deprecation warnings
 
 def initialize_ollama_model():
     try:
+        # Test connection first
+        import requests
+        response = requests.get("http://localhost:11434")
+        if response.status_code != 200:
+            raise ConnectionError("Ollama server not responding")
+            
         llm_engine = ChatOllama(
             model="deepseek-r1:1.5b",
             base_url="http://localhost:11434",
@@ -19,6 +26,7 @@ def initialize_ollama_model():
         return llm_engine
     except Exception as e:
         st.error(f"Ollama initialization error: {e}")
+        st.error("Please ensure Ollama is running (ollama serve)")
         return None
 
 
